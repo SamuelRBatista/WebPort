@@ -1,0 +1,15 @@
+services:
+  portfolio:
+    build: .
+    image: portfolio-samuel:latest
+    container_name: portfolio-samuel
+    restart: unless-stopped
+    ports:
+      - "8080:80"   # troque 8080 se a porta já estiver em uso
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
